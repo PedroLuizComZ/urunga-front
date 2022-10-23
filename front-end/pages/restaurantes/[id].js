@@ -24,7 +24,7 @@ export default function Home() {
 
   const loadData = async () => {
     axios
-      .get(`http://localhost:8080/store/${id}`)
+      .get(`process.env.NEXT_PUBLIC_BACK_URL/store/${id}`)
       .then(function (response) {
         setRestaurant(response.data);
       })
@@ -49,7 +49,7 @@ export default function Home() {
     const params = data;
     params.email = email;
     axios
-      .put(`http://localhost:8080/store/${id}`, params)
+      .put(`process.env.NEXT_PUBLIC_BACK_URL/store/${id}`, params)
       .then(function (response) {
         router.push("/restaurantes");
       })

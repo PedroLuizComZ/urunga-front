@@ -31,7 +31,7 @@ export default function Home() {
     const params = data;
     params.email = email;
     axios
-      .post("http://localhost:8080/store/", params)
+      .post("process.env.NEXT_PUBLIC_BACK_URL/store/", params)
       .then(function (response) {
         router.push("/restaurantes");
       })
