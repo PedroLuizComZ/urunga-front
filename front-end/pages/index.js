@@ -14,7 +14,7 @@ export default function Home() {
 
   const onSubmit = (data) => {
     axios
-      .post("process.env.NEXT_PUBLIC_BACK_URL/user/login", data)
+      .post(`${process.env.NEXT_PUBLIC_BACK_URL}/user/login`, data)
       .then(function (response) {
         if (response.data) {
           Cookies.set("user", JSON.stringify(response.data));

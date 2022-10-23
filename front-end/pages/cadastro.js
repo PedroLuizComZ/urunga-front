@@ -10,7 +10,7 @@ export default function Home() {
   } = useForm();
   const onSubmit = (data) => {
     axios
-      .post("process.env.NEXT_PUBLIC_BACK_URL/user/", data)
+      .post(`${process.env.NEXT_PUBLIC_BACK_URL}/user/`, data)
       .then(function (response) {
         console.log(response);
       })

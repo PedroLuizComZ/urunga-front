@@ -25,7 +25,7 @@ export default function Home() {
     let user = await Cookies.get("user");
     const { email } = JSON.parse(user);
     axios
-      .post("process.env.NEXT_PUBLIC_BACK_URL/store/list", {email})
+      .post(`${process.env.NEXT_PUBLIC_BACK_URL}/store/list`, {email})
       .then(function (response) {
         setRestaurants(response.data);
       })
