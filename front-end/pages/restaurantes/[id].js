@@ -95,6 +95,7 @@ export default function Home() {
             {...register(`promotions${index}`, {
               required: "Texto da Promoção Obrigatório",
             })}
+            key={index}
             defaultValue={item}
           />
         );

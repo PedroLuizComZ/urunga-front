@@ -63,6 +63,7 @@ export default function Home() {
           <input
             placeholder={"Promoção"}
             {...register(`promotions${index}`, { required: "Texto da Promoção Obrigatório" })}
+            key={index}
           />
         );
       })}
