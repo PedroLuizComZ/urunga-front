@@ -3,7 +3,7 @@ var app = express();
 var cors = require('cors')
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var port = 8080;
+var port = process.env.PORT || 8080;
 var db = 'mongodb+srv://admin:qwertyuiop@cluster0.8og4myr.mongodb.net/test?retryWrites=true&w=majority';
 
 var stores = require('./routes/store');
