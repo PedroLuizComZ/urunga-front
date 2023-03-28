@@ -64,7 +64,7 @@ p::before {
   display: inline;
 }
 
-input, button {
+input, button, select {
   display: block;
   box-sizing: border-box;
   width: 100%;

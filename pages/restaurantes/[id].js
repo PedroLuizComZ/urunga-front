@@ -34,15 +34,21 @@ export default function Home() {
   };
 
   const onSubmit = async (data) => {
-    const storeKeys = Object.keys(data)
+    const storeKeys = Object.keys(data);
     const promotionsArray = [];
-    storeKeys.forEach(item => {
-      if(item.startsWith('promotions')) {
-        promotionsArray.push(data[item])
+    storeKeys.forEach((item) => {
+      if (item.startsWith("promotions")) {
+        promotionsArray.push(data[item]);
         delete data[item];
       }
     });
-    data.promotions = promotionsArray
+    data.promotions = promotionsArray;
+
+    if (data.logo.length === 0) {
+      data.logo = restaurant.logo;
+    } else {
+      data.logo = await getBase64(data.logo[0]);
+    }
 
     let user = await Cookies.get("user");
     const { email } = JSON.parse(user);
@@ -79,11 +85,40 @@ export default function Home() {
         {...register("description", { required: "Descrição Obrigatório" })}
         defaultValue={restaurant.description}
       />
-      <input
-        placeholder={"Logo"}
-        {...register("logo", { required: "logo Obrigatório" })}
-        defaultValue={restaurant.logo}
-      />
+      <input placeholder={"Logo"} type="file" {...register("logo")} />
+      <select
+        name="category"
+        id="category"
+        {...register("category", {
+          required: "Tipo do restaurante é Obrigatório",
+        })}
+        defaultValue={restaurant.category}
+      >
+        <option value="" disabled>
+          Tipo do restaurante
+        </option>
+        <option value="restaurante">Restaurante</option>
+        <option value="lanche">Lanche</option>
+        <option value="pizza">Pizzaria</option>
+        <option value="barzinho">Barzinho</option>
+        <option value="doces">Doces</option>
+        <option value="doces">Japonês</option>
+        <option value="cafereria">Cafereria</option>
+        <option value="massas">Massas</option>
+      </select>
+      <select
+        name="city"
+        id="city"
+        {...register("city", { required: "Cidade é Obrigatório" })}
+        defaultValue={restaurant.city}
+      >
+        <option value="" disabled>
+          Cidade
+        </option>
+        <option value="jundiai">Jundiaí</option>
+        <option value="varzeapta">Várzea Paulista</option>
+        <option value="campolimpopta">Campo Limpo Paulista</option>
+      </select>
       <p role="button" onClick={() => setPromotions([...promotions, ""])}>
         Adicionar Promoção
       </p>

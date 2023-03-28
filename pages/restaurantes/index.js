@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import Cookies from "js-cookie";
+import {getSession} from "../../utils/getSession";
 import { useRouter } from "next/router";
 
 export default function Home() {
@@ -18,14 +18,15 @@ export default function Home() {
   }, []);
 
   const handleClick = async (id) => {
-    router.push(`/restaurantes/${id}`)
-  }
+    router.push(`/restaurantes/${id}`);
+  };
 
   const loadData = async () => {
-    let user = await Cookies.get("user");
-    const { email } = JSON.parse(user);
+    const session = getSession();
     axios
-      .post(`${process.env.NEXT_PUBLIC_BACK_URL}/store/list`, {email})
+      .post(`${process.env.NEXT_PUBLIC_BACK_URL}/store/list`, {
+        email: session.email,
+      })
       .then(function (response) {
         setRestaurants(response.data);
       })
@@ -42,22 +43,24 @@ export default function Home() {
 
       <table>
         <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Descricao</th>
-        </tr>
+          <tr>
+            <th>Nome</th>
+            <th>Descricao</th>
+          </tr>
         </thead>
-       <tbody>
-       {restaurants.map((restaurant) => {
-          return (
-            <tr key={restaurant._id} onClick={() => handleClick(restaurant._id)}>
-              <td>{restaurant.name}</td>
-              <td>{restaurant.description}</td>
-            </tr>
-          );
-        })}
-       </tbody>
-     
+        <tbody>
+          {restaurants.map((restaurant) => {
+            return (
+              <tr
+                key={restaurant._id}
+                onClick={() => handleClick(restaurant._id)}
+              >
+                <td>{restaurant.name}</td>
+                <td>{restaurant.description}</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
       <ul></ul>
     </form>
