@@ -102,8 +102,8 @@ export default function Home() {
         <option value="pizza">Pizzaria</option>
         <option value="barzinho">Barzinho</option>
         <option value="doces">Doces</option>
-        <option value="doces">Japonês</option>
-        <option value="cafereria">Cafereria</option>
+        <option value="japones">Japonês</option>
+        <option value="cafeteria">Cafeteria</option>
         <option value="massas">Massas</option>
       </select>
       <select
