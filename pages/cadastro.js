@@ -1,20 +1,32 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import Link from "next/link";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
-export default function Home() {
+export default function Cadastro() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const router = useRouter();
+
   const onSubmit = (data) => {
     axios
       .post(`${process.env.NEXT_PUBLIC_BACK_URL}/user/`, data)
       .then(function (response) {
-        console.log(response);
+        if (response.data) {
+          Cookies.set("user", JSON.stringify(response.data.sessionToken));
+          router.push("/restaurantes");
+        } else {
+          alert("Email ou senha incorreto.");
+        }
       })
       .catch(function (error) {
+        alert("Ocorreu um erro ao criar sua conta, tente novamente mais tarde.");
+
         console.error(error);
       });
   };
