@@ -27,7 +27,6 @@ export default function ForgetPassword() {
       <input
         placeholder={"Email"}
         {...register("email", { required: "Email Obrigatório" })}
-        type="password"
       />
       <button type="submit">Confirmar </button>
       <Link href="/">
