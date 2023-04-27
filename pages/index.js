@@ -38,11 +38,17 @@ export default function Home() {
       <input
         placeholder={"Senha"}
         {...register("password", { required: "Senha Obrigatório" })}
+        type="password"
       />
       <Link href="/cadastro">
         <p role="button">Criar nova Conta</p>
       </Link>
+
       <button type="submit">Confirmar</button>
+      <Link href="/esqueci-minha-senha">
+        <p role="button">Esqueci minha senha</p>
+      </Link>
+
       <hr />
 
       {errors.email && <p role="alert">{errors.email?.message}</p>}

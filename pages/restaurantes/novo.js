@@ -42,8 +42,14 @@ export default function Home() {
       });
   };
 
-  const handleAddPromotion = async () => {
+  const handleAddPromotion = () => {
     setPromotions([...promotions, ""]);
+  };
+
+  const handleRemovePromotion = (id) => {
+    const promotionsCopy = promotions;
+    promotionsCopy.splice(id, 1);
+    setPromotions([...promotionsCopy]);
   };
 
   const getBase64 = (file) =>
@@ -73,7 +79,9 @@ export default function Home() {
       <select
         name="category"
         id="category"
-        {...register("category", { required: "Tipo do restaurante é Obrigatório" })}
+        {...register("category", {
+          required: "Tipo do restaurante é Obrigatório",
+        })}
       >
         <option value="" disabled selected>
           Tipo do restaurante
@@ -104,13 +112,21 @@ export default function Home() {
       </p>
       {promotions.map((_item, index) => {
         return (
-          <input
-            placeholder={"Promoção"}
-            {...register(`promotions${index}`, {
-              required: "Texto da Promoção Obrigatório",
-            })}
-            key={index}
-          />
+          <div key={index} className="promotion-wrapper">
+            <input
+              placeholder={"Promoção"}
+              {...register(`promotions${index}`, {
+                required: "Texto da Promoção Obrigatório",
+              })}
+              onChange={(e) => {
+                const promotionsCopy = promotions;
+                promotionsCopy[index] = e.target.value;
+                setPromotions([...promotionsCopy]);
+              }}
+              value={promotions[index]}
+            />
+            <label onClick={() => handleRemovePromotion(index)}>X</label>
+          </div>
         );
       })}
       <button type="submit">Confirmar </button>

@@ -153,3 +153,16 @@ th {
   color: #000000;
   background-color: #dddddd;
 }
+
+.promotion-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.promotion-wrapper label {
+  margin-bottom: 10px !important;
+  height: 100%;
+  margin-left: 20px !important;
+  cursor: pointer;
+  margin: 0;
+}

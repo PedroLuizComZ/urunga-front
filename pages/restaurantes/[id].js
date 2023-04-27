@@ -42,7 +42,7 @@ export default function Home() {
         delete data[item];
       }
     });
-    data.promotions = promotionsArray;
+    data.promotions = restaurant.promotions;
 
     if (data.logo.length === 0) {
       data.logo = restaurant.logo;
@@ -71,6 +71,12 @@ export default function Home() {
       </form>
     );
   }
+
+  const handleRemovePromotion = (id) => {
+    const restaurantCopy = restaurant;
+    restaurantCopy.promotions.splice(id, 1);
+    setRestaurant({ ...restaurantCopy });
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -119,20 +125,35 @@ export default function Home() {
         <option value="varzeapta">Várzea Paulista</option>
         <option value="campolimpopta">Campo Limpo Paulista</option>
       </select>
-      <p role="button" onClick={() => setPromotions([...promotions, ""])}>
+      <p
+        role="button"
+        onClick={() => {
+          const restaurantCopy = restaurant;
+          console.log(restaurantCopy);
+          restaurantCopy.promotions.push("");
+          setRestaurant({...restaurantCopy});
+        }}
+      >
         Adicionar Promoção
       </p>
 
       {restaurant.promotions.map((item, index) => {
         return (
-          <input
-            placeholder={"Promoção"}
-            {...register(`promotions${index}`, {
-              required: "Texto da Promoção Obrigatório",
-            })}
-            key={index}
-            defaultValue={item}
-          />
+          <div key={index} className="promotion-wrapper">
+            <input
+              placeholder={"Promoção"}
+              {...register(`promotions${index}`, {
+                required: "Texto da Promoção Obrigatório",
+              })}
+              onChange={(e) => {
+                const restaurantCopy = restaurant;
+                restaurantCopy.promotions[index] = e.target.value;
+                setRestaurant({ ...restaurantCopy });
+              }}
+              value={item}
+            />
+            <label onClick={() => handleRemovePromotion(index)}>X</label>
+          </div>
         );
       })}
 

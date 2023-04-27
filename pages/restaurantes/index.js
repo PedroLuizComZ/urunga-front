@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import {getSession} from "../../utils/getSession";
+import { getSession } from "../../utils/getSession";
 import { useRouter } from "next/router";
 
 export default function Home() {
@@ -21,18 +21,47 @@ export default function Home() {
     router.push(`/restaurantes/${id}`);
   };
 
-  const loadData = async () => {
-    const session = getSession();
+  const handleDelete = async (event, id) => {
+    event.preventDefault();
+    event.stopPropagation();
     axios
-      .post(`${process.env.NEXT_PUBLIC_BACK_URL}/store/list`, {
-        email: session.email,
-      })
+      .delete(`${process.env.NEXT_PUBLIC_BACK_URL}/store/${id}`)
       .then(function (response) {
-        setRestaurants(response.data);
+        alert("Restaurante excluido com sucesso.");
+        loadData();
+        console.log(response);
       })
       .catch(function (error) {
         console.error(error);
       });
+  };
+
+  const loadData = async () => {
+    const session = getSession();
+
+    if (session._id === "6355677799e6040016c6df84") {
+      axios
+        .get(`${process.env.NEXT_PUBLIC_BACK_URL}/store/`)
+        .then(function (response) {
+          setRestaurants(response.data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    } else {
+      axios
+        .post(`${process.env.NEXT_PUBLIC_BACK_URL}/store/list`, {
+          email: session.email,
+        })
+        .then(function (response) {
+          setRestaurants(response.data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
+
+    console.log(session);
   };
 
   return (
@@ -46,6 +75,7 @@ export default function Home() {
           <tr>
             <th>Nome</th>
             <th>Descricao</th>
+            <th>Ação</th>
           </tr>
         </thead>
         <tbody>
@@ -57,6 +87,9 @@ export default function Home() {
               >
                 <td>{restaurant.name}</td>
                 <td>{restaurant.description}</td>
+                <td onClick={(e) => handleDelete(e, restaurant._id)}>
+                  Excluir
+                </td>
               </tr>
             );
           })}

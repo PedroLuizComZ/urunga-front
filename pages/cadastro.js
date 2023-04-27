@@ -42,6 +42,7 @@ export default function Cadastro() {
       <input
         placeholder={"Senha"}
         {...register("password", { required: "Senha Obrigatório" })}
+        type="password"
       />
       <button type="submit">Confirmar </button>
       <Link href="/">
