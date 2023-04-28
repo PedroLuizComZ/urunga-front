@@ -91,6 +91,16 @@ export default function Home() {
         {...register("description", { required: "Descrição Obrigatório" })}
         defaultValue={restaurant.description}
       />
+      <input
+        placeholder={"Instagram"}
+        {...register("instagram")}
+        defaultValue={restaurant.instagram}
+      />
+      <input
+        placeholder={"Google"}
+        {...register("google")}
+        defaultValue={restaurant.google}
+      />
       <input placeholder={"Logo"} type="file" {...register("logo")} />
       <select
         name="category"
@@ -131,7 +141,7 @@ export default function Home() {
           const restaurantCopy = restaurant;
           console.log(restaurantCopy);
           restaurantCopy.promotions.push("");
-          setRestaurant({...restaurantCopy});
+          setRestaurant({ ...restaurantCopy });
         }}
       >
         Adicionar Promoção

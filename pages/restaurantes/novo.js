@@ -72,6 +72,14 @@ export default function Home() {
         {...register("description", { required: "Descrição é Obrigatório" })}
       />
       <input
+        placeholder={"Instagram"}
+        {...register("instagram")}
+      />
+      <input
+        placeholder={"Google"}
+        {...register("google")}
+      />
+      <input
         placeholder={"Logo"}
         type="file"
         {...register("logo", { required: "Logo é Obrigatório" })}
