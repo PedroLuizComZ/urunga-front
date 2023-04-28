@@ -39,7 +39,7 @@ export default function Home() {
   const loadData = async () => {
     const session = getSession();
 
-    if (session._id === "6355677799e6040016c6df84") {
+    if (session._id === "6436859da102160040d7dced") {
       axios
         .get(`${process.env.NEXT_PUBLIC_BACK_URL}/store/`)
         .then(function (response) {
