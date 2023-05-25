@@ -78,6 +78,14 @@ export default function Home() {
     setRestaurant({ ...restaurantCopy });
   };
 
+  const getBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1>Editar restaurante</h1>
