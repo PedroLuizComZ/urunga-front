@@ -39,7 +39,7 @@ export default function Home() {
       if (customer.data.length > 0) {
         const portalLink = await stripe.billingPortal.sessions.create({
           customer: customer.data[0].id,
-          return_url: "https://urunga-mobile.vercel.app/",
+          return_url: "https://urunga.com.br/",
         });
         router.push(portalLink.url);
       } else {
