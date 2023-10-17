@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps } : AppProps) {
         router.push("/restaurantes");
       }
 
-      if (userType === "user" && router.pathname === "/app") {
+      if (userType === "app" && router.pathname === "/app") {
         router.push("/app/list");
       }
     }
