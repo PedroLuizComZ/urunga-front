@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 export default function Footer() {
   const router = useRouter();
 
-  if (router.asPath !== "/" && router.asPath !== "/cadastro") {
+  if (router.asPath !== "/app" && router.asPath !== "/app/cadastro") {
     return (
       <>
         <Spacing />
         <FooterContainer>
-          <div onClick={() => router.push("/list")}>
+          <div onClick={() => router.push("/app/list")}>
             <Image
               src={`/icons/home.svg`}
               alt={"home"}
@@ -18,7 +18,7 @@ export default function Footer() {
               width={30}
             />
           </div>
-          <div onClick={() => router.push("/profile")}>
+          <div onClick={() => router.push("/app/profile")}>
             <Image
               src={`/icons/profile.svg`}
               alt={"profile"}

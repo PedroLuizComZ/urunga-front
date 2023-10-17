@@ -1,13 +1,13 @@
 import Head from "next/head";
-import { ValidatorContainer } from "../styles/Validator";
-import { parseJwt } from "../utils/parseJwt";
+import { ValidatorContainer } from "../../styles/Validator";
+import { parseJwt } from "../../utils/parseJwt";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { createCheckinController } from "../controllers/Checkin.controller";
+import { createCheckinController } from "../../controllers/Checkin.controller";
 import { useEffect, useState } from "react";
-import { listStoreByIdController } from "../controllers/Restaurants.controller";
-import { IStores } from "../interfaces/IStores";
-import Loader from "../components/Loader";
+import { listStoreByIdController } from "../../controllers/Restaurants.controller";
+import { IStores } from "../../interfaces/IStores";
+import Loader from "../../components/Loader";
 
 export default function Home() {
   const router = useRouter();
@@ -76,6 +76,7 @@ export default function Home() {
           <>
             <h1>Validar </h1>
             <p>Confirmar desconto</p>
+            <p>{restaurant?.name}</p>
             <p>{restaurant?.promotions[Number(router.query.promotionId)]}</p>
             <button type="button" onClick={handleClick}>
               Confirmar

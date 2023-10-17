@@ -1,13 +1,13 @@
 import Head from "next/head";
-import { ModalContainer, ProfileContainer } from "../styles/Profile";
+import { ModalContainer, ProfileContainer } from "../../styles/Profile";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { Modal, ModalBody } from "reactstrap";
 import { useEffect, useState } from "react";
-import { parseJwt } from "../utils/parseJwt";
-import { deleteAccountController } from "../controllers/Auth.controller";
-import { checkSubscription } from "../utils/checkSubscription";
+import { parseJwt } from "../../utils/parseJwt";
+import { deleteAccountController } from "../../controllers/Auth.controller";
+import { checkSubscription } from "../../utils/checkSubscription";
 const stripe = require("stripe")(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
   const handleLogout = () => {
     Cookies.remove("token");
     setTimeout(() => {
-      router.push("/");
+      router.push("/app");
     }, 300);
   };
 

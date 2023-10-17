@@ -4,6 +4,8 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { parseJwt } from "../../utils/parseJwt";
+
 
 export default function Home() {
   const {
@@ -12,6 +14,11 @@ export default function Home() {
     formState: { errors },
   } = useForm();
   const [restaurant, setRestaurant] = useState({});
+
+  const [veggie, setVeggie] = useState(false);
+  const [petFriendly, setPetFriendly] = useState(false);
+  const [kids, setKids] = useState(false);
+  const [accessibility, setAccessibility] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
@@ -27,6 +34,10 @@ export default function Home() {
       .get(`${process.env.NEXT_PUBLIC_BACK_URL}/store/${id}`)
       .then(function (response) {
         setRestaurant(response.data);
+        setVeggie(response.data.veggie);
+        setPetFriendly(response.data.petFriendly);
+        setKids(response.data.kids);
+        setAccessibility(response.data.accessibility);
       })
       .catch(function (error) {
         console.error(error);
@@ -50,8 +61,8 @@ export default function Home() {
       data.logo = await getBase64(data.logo[0]);
     }
 
-    let user = await Cookies.get("user");
-    const { email } = JSON.parse(user);
+    let user = Cookies.get("token");
+    const { email } = parseJwt(`${user}`);
     const params = data;
     params.email = email;
     axios
@@ -99,6 +110,32 @@ export default function Home() {
         {...register("description", { required: "Descrição Obrigatório" })}
         defaultValue={restaurant.description}
       />
+
+      <hr />
+
+      <input
+        placeholder={"Nome para contato"}
+        {...register("contactName")}
+        defaultValue={restaurant.contactName}
+      />
+      <input
+        placeholder={"Telefone para contato"}
+        {...register("contactPhone")}
+        defaultValue={restaurant.contactPhone}
+      />
+      <input
+        placeholder={"Email para contato"}
+        {...register("contactEmail")}
+        defaultValue={restaurant.contactEmail}
+      />
+      <input
+        placeholder={"Chave Pix"}
+        {...register("pix")}
+        defaultValue={restaurant.pix}
+      />
+
+      <hr />
+
       <input
         placeholder={"Instagram"}
         {...register("instagram")}
@@ -109,6 +146,72 @@ export default function Home() {
         {...register("google")}
         defaultValue={restaurant.google}
       />
+
+      <input
+        placeholder={"Review"}
+        {...register("review")}
+        defaultValue={restaurant.review}
+      />
+
+      <div className="checkbox-container">
+        <p>Veggie</p>
+        <label class="switch">
+          <input
+            id="veggie"
+            name="veggie"
+            type="checkbox"
+            {...register("veggie")}
+            checked={veggie}
+            onChange={(e) => setVeggie(e.target.checked)}
+          />
+          <span class="slider round" />
+        </label>
+      </div>
+
+      <div className="checkbox-container">
+        <p>Pet Friendly</p>
+        <label class="switch">
+          <input
+            id="petFriendly"
+            name="petFriendly"
+            type="checkbox"
+            {...register("petFriendly")}
+            checked={petFriendly}
+            onChange={(e) => setPetFriendly(e.target.checked)}
+          />
+          <span class="slider round" />
+        </label>
+      </div>
+
+      <div className="checkbox-container">
+        <p>Espaço kids</p>
+        <label class="switch">
+          <input
+            id="kids"
+            name="kids"
+            type="checkbox"
+            {...register("kids")}
+            checked={kids}
+            onChange={(e) => setKids(e.target.checked)}
+          />
+          <span class="slider round" />
+        </label>
+      </div>
+
+      <div className="checkbox-container">
+        <p>Acessibilidade</p>
+        <label class="switch">
+          <input
+            id="accessibility"
+            name="accessibility"
+            type="checkbox"
+            {...register("accessibility")}
+            checked={accessibility}
+            onChange={(e) => setAccessibility(e.target.checked)}
+          />
+          <span class="slider round" />
+        </label>
+      </div>
       <input placeholder={"Logo"} type="file" {...register("logo")} />
       <select
         name="category"

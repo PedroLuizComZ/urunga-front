@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { SuccessContainer } from "../styles/Success";
+import { SuccessContainer } from "../../styles/Success";
 import Image from "next/image";
 import { useRouter } from "next/router";
 

@@ -17,7 +17,8 @@ export default function Home() {
       .post(`${process.env.NEXT_PUBLIC_BACK_URL}/user/login`, data)
       .then(function (response) {
         if (response.data) {
-          Cookies.set("user", JSON.stringify(response.data.sessionToken));
+          Cookies.set("token", response.data.sessionToken);
+          Cookies.set("userType", 'admin');
           router.push("/restaurantes");
         } else {
           alert("Email ou senha incorreto");

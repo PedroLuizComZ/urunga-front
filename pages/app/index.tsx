@@ -35,7 +35,7 @@ export default function Login() {
       } catch (error) {
         console.log(error);
       }
-      router.push(`/list`);
+      router.push(`/app/list`);
     }
   };
 
@@ -81,7 +81,7 @@ export default function Login() {
         <p>
           Nao possui uma conta?{" "}
           <label>
-            <Link href="/cadastro">Cadastre-se</Link>{" "}
+            <Link href="/app/cadastro">Cadastre-se</Link>{" "}
           </label>
         </p>
       </LoginContainer>

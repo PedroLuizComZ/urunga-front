@@ -71,14 +71,73 @@ export default function Home() {
         placeholder={"Descrição"}
         {...register("description", { required: "Descrição é Obrigatório" })}
       />
-      <input
-        placeholder={"Instagram"}
-        {...register("instagram")}
-      />
-      <input
-        placeholder={"Google"}
-        {...register("google")}
-      />
+
+      <hr />
+
+      <input placeholder={"Nome para contato"} {...register("contactName")} />
+      <input placeholder={"Telefone para contato"} {...register("contactPhone")} />
+      <input placeholder={"Email para contato"} {...register("contactEmail")} />
+      <input placeholder={"Chave Pix"} {...register("pix")} />
+
+      <hr />
+
+      <input placeholder={"Instagram"} {...register("instagram")} />
+      <input placeholder={"Google"} {...register("google")} />
+
+      <input placeholder={"Review"} {...register("review")} />
+
+      <div className="checkbox-container">
+        <p>Veggie</p>
+        <label class="switch">
+          <input
+            id="veggie"
+            name="veggie"
+            type="checkbox"
+            {...register("veggie")}
+          />
+          <span class="slider round" />
+        </label>
+      </div>
+
+      <div className="checkbox-container">
+        <p>Pet Friendly</p>
+        <label class="switch">
+          <input
+            id="petFriendly"
+            name="petFriendly"
+            type="checkbox"
+            {...register("petFriendly")}
+          />
+          <span class="slider round" />
+        </label>
+      </div>
+
+      <div className="checkbox-container">
+        <p>Espaço kids</p>
+        <label class="switch">
+          <input
+            id="kids"
+            name="kids"
+            type="checkbox"
+            {...register("kids")}
+          />
+          <span class="slider round" />
+        </label>
+      </div>
+
+      <div className="checkbox-container">
+        <p>Acessibilidade</p>
+        <label class="switch">
+          <input
+            id="accessibility"
+            name="accessibility"
+            type="checkbox"
+            {...register("accessibility")}
+          />
+          <span class="slider round" />
+        </label>
+      </div>
+
       <input
         placeholder={"Logo"}
         type="file"

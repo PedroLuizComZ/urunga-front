@@ -4,14 +4,14 @@ import {
   ListContainer,
   Categories,
   CitySelector,
-} from "../styles/List";
+} from "../../styles/List";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { listStoresController } from "../controllers/Restaurants.controller";
-import { IStores } from "../interfaces/IStores";
-import Loader from "../components/Loader";
-import { calcRating } from "../utils/calcRating";
+import { listStoresController } from "../../controllers/Restaurants.controller";
+import { IStores } from "../../interfaces/IStores";
+import Loader from "../../components/Loader";
+import { calcRating } from "../../utils/calcRating";
 
 export default function Home() {
   const router = useRouter();
@@ -31,11 +31,11 @@ export default function Home() {
   };
 
   const handleClick = (id: string) => {
-    router.push(`/restaurant/${id}`);
+    router.push(`/app/restaurant/${id}`);
   };
 
   const handleCategory = (title: string) => {
-    router.push(`/category/${title}`);
+    router.push(`/app/category/${title}`);
   };
 
   const categories = [
@@ -187,6 +187,44 @@ export default function Home() {
                         </div>
                         <div className="info-box">
                           <p>{item.name}</p>
+                          <div className="info-icons">
+                            {item && item.veggie && (
+                              <Image
+                                src={"/images/vegan.png"}
+                                alt={"pet"}
+                                height={18}
+                                width={18}
+                                style={{ marginRight: 10 }}
+                              />
+                            )}
+                            {item && item.petFriendly && (
+                              <Image
+                                src={"/images/pet.png"}
+                                alt={"pet"}
+                                height={18}
+                                width={18}
+                                style={{ marginRight: 10 }}
+                              />
+                            )}
+                            {item && item.kids && (
+                              <Image
+                                src={"/images/kids.png"}
+                                alt={"pet"}
+                                height={18}
+                                width={18}
+                                style={{ marginRight: 10 }}
+                              />
+                            )}
+                            {item && item.accessibility && (
+                              <Image
+                                src={"/images/chair.png"}
+                                alt={"pet"}
+                                height={18}
+                                width={18}
+                                style={{ marginRight: 10 }}
+                              />
+                            )}
+                          </div>
                           <span>{item.description}</span>
                           <div className="ratings">
                             <Image

@@ -18,7 +18,8 @@ export default function Cadastro() {
       .post(`${process.env.NEXT_PUBLIC_BACK_URL}/user/`, data)
       .then(function (response) {
         if (response.data) {
-          Cookies.set("user", JSON.stringify(response.data.sessionToken));
+          Cookies.set("token", response.data.sessionToken);
+          Cookies.set("userType", 'admin');
           router.push("/restaurantes");
         } else {
           alert("Email ou senha incorreto.");

@@ -1,10 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
-import { SignupContainer } from "../styles/Signup";
+import { SignupContainer } from "../../styles/Signup";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { createUserController } from "../controllers/Auth.controller";
-import { IUser } from "../interfaces/IUser";
+import { createUserController } from "../../controllers/Auth.controller";
+import { IUser } from "../../interfaces/IUser";
 import { useRouter } from "next/router";
 
 export default function Signup() {
@@ -40,7 +40,7 @@ export default function Signup() {
     const result = await createUserController(user);
 
     if (result.status === "success") {
-      router.push(`/list/`);
+      router.push(`/app/list`);
     }
   };
 
@@ -137,7 +137,7 @@ export default function Signup() {
         <p>
           Ja Possui uma conta?{" "}
           <label>
-            <Link href="/"> Entre</Link>
+            <Link href="/app"> Entre</Link>
           </label>
         </p>
       </SignupContainer>

@@ -17,7 +17,7 @@ const parseJwt = (token) => {
 };
 
 export const getSession = () => {
-  let session = Cookies.get("user");
+  let session = Cookies.get("token");
   const jwt = parseJwt(session);
   return jwt.data
 };

@@ -6,27 +6,27 @@ import {
   ModalReviewContainer,
   QrCodeContainer,
   RestaurantContainer,
-} from "../../styles/Restaurant";
+} from "../../../styles/Restaurant";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
-import { IStores } from "../../interfaces/IStores";
+import { IStores } from "../../../interfaces/IStores";
 import {
   createRatingController,
   listStoreByIdController,
-} from "../../controllers/Restaurants.controller";
+} from "../../../controllers/Restaurants.controller";
 import QRCode from "qrcode";
 import { Modal, ModalBody } from "reactstrap";
 import Cookies from "js-cookie";
 const stripe = require("stripe")(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
-import { parseJwt } from "../../utils/parseJwt";
-import { getCheckinByIdController } from "../../controllers/Checkin.controller";
+import { parseJwt } from "../../../utils/parseJwt";
+import { getCheckinByIdController } from "../../../controllers/Checkin.controller";
 
-import StarImage from "../../public/images/star.png";
-import StarFullImage from "../../public/images/star-full.png";
-import { calcRating } from "../../utils/calcRating";
-import { getUserProfileController } from "../../controllers/Auth.controller";
-import { getMobileDetect } from "../../utils/getMobileDetect";
+import StarImage from "../../../public/images/star.png";
+import StarFullImage from "../../../public/images/star-full.png";
+import { calcRating } from "../../../utils/calcRating";
+import { getUserProfileController } from "../../../controllers/Auth.controller";
+import { getMobileDetect } from "../../../utils/getMobileDetect";
 
 const useMobileDetect = () => {
   useEffect(() => {}, []);
@@ -54,7 +54,7 @@ export default function RestaurantDetail() {
   const toggleStar = () => setStartModal(!startModal);
 
   const handleClick = () => {
-    router.push(`/list`);
+    router.push(`/app/list`);
   };
 
   const [restaurant, setRestaurant] = useState<IStores | null>(null);
@@ -90,7 +90,7 @@ export default function RestaurantDetail() {
 
   const checkSubscription = async () => {
     let jwtToken: any = Cookies.get("token");
-  
+
     const parsedJwt = await parseJwt(jwtToken);
 
     const userProfile = await getUserProfileController(parsedJwt.data._id);
@@ -158,7 +158,7 @@ export default function RestaurantDetail() {
     console.log(
       `${
         window.location.origin
-      }/validador?token=${token}&date=${new Date().getTime()}&restaurantId=${id}&promotionId=${
+      }/app/validador?token=${token}&date=${new Date().getTime()}&restaurantId=${id}&promotionId=${
         document.querySelector('input[name="radio"]:checked')!.id
       }`
     );
@@ -168,7 +168,7 @@ export default function RestaurantDetail() {
         canvasRef.current,
         `${
           window.location.origin
-        }/validador?token=${token}&date=${new Date().getTime()}&restaurantId=${id}&promotionId=${
+        }/app/validador?token=${token}&date=${new Date().getTime()}&restaurantId=${id}&promotionId=${
           document.querySelector('input[name="radio"]:checked')!.id
         }` || " ",
         (error) => error && console.error(error)
@@ -182,6 +182,10 @@ export default function RestaurantDetail() {
 
   const handleInstagramClick = () => {
     window.open(`https://www.instagram.com/${restaurant?.instagram}`);
+  };
+
+  const handleReviewClick = () => {
+    window.open(restaurant?.review);
   };
 
   return (
@@ -221,8 +225,45 @@ export default function RestaurantDetail() {
                   />
                 </div>
                 <div className="info-box">
-                  <p>{restaurant!.name}</p>
-                  <span>Beyti Restaurant, Taksim</span>
+                  <p>{restaurant!.name} </p>
+                  <div className="social-media-container">
+                    {restaurant && restaurant.veggie && (
+                      <Image
+                        src={"/images/vegan.png"}
+                        alt={"pet"}
+                        height={30}
+                        width={30}
+                        style={{ marginRight: 10 }}
+                      />
+                    )}
+                    {restaurant && restaurant.petFriendly && (
+                      <Image
+                        src={"/images/pet.png"}
+                        alt={"pet"}
+                        height={30}
+                        width={30}
+                        style={{ marginRight: 10 }}
+                      />
+                    )}
+                    {restaurant && restaurant.kids && (
+                      <Image
+                        src={"/images/kids.png"}
+                        alt={"pet"}
+                        height={30}
+                        width={30}
+                        style={{ marginRight: 10 }}
+                      />
+                    )}
+                    {restaurant && restaurant.accessibility && (
+                      <Image
+                        src={"/images/chair.png"}
+                        alt={"pet"}
+                        height={30}
+                        width={30}
+                        style={{ marginRight: 10 }}
+                      />
+                    )}
+                  </div>
                   <div className="ratings" onClick={toggleStar}>
                     <Image
                       src={"/icons/start.svg"}
@@ -254,6 +295,18 @@ export default function RestaurantDetail() {
                           height={30}
                           width={30}
                           onClick={handleInstagramClick}
+                        />
+                      )}
+
+                    {restaurant &&
+                      restaurant.review &&
+                      restaurant.review !== "" && (
+                        <Image
+                          src={"/images/review.png"}
+                          alt={"review"}
+                          height={30}
+                          width={30}
+                          onClick={handleReviewClick}
                         />
                       )}
                   </div>
@@ -289,7 +342,7 @@ export default function RestaurantDetail() {
             {hasValidSubscription ? (
               <button onClick={handleClickQrCode}>Gerar Cupom</button>
             ) : (
-               <button onClick={createSubscription}>Assinar</button>
+              <button onClick={createSubscription}>Assinar</button>
             )}
           </QrCodeContainer>
           <Modal isOpen={modal} toggle={toggle} centered>

@@ -1,4 +1,4 @@
-import { TermosContainer } from "../styles/Termos";
+import { TermosContainer } from "../../styles/Termos";
 
 export default function Termos() {
   return (

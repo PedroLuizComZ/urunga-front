@@ -10,6 +10,10 @@ export const ListContainer = styled.div`
   margin: auto;
   padding: 15px;
 
+  .info-icons {
+    margin-top: -15px;
+  }
+
   button {
     background: var(--primary-color);
     border-radius: 10px;
