@@ -22,6 +22,7 @@ export default function Home() {
 
   const handleLogout = () => {
     Cookies.remove("token");
+    Cookies.remove("userType");
     setTimeout(() => {
       router.push("/app");
     }, 300);

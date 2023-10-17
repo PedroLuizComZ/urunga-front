@@ -36,6 +36,11 @@ export default function Home() {
       });
   };
 
+  const handleLogout = async () => {
+    Cookies.remove("token");
+    Cookies.remove("userType");
+  };
+
   const loadData = async () => {
     const session = getSession();
 
@@ -60,8 +65,6 @@ export default function Home() {
           console.error(error);
         });
     }
-
-    console.log(session);
   };
 
   return (
@@ -95,7 +98,9 @@ export default function Home() {
           })}
         </tbody>
       </table>
-      <ul></ul>
+      <button type="button" onClick={handleLogout}>
+        Sair
+      </button>
     </form>
   );
 }
