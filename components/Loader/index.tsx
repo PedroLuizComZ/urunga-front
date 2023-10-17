@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { LoaderComponent } from "./style";
 import { useRouter } from "next/router";
 

@@ -8,8 +8,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import Cookies from "js-cookie";
+import { AppProps } from "next/app";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps } : AppProps) {
   const router = useRouter();
 
   useEffect(() => {

@@ -9,16 +9,16 @@ export default function Home() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } : any = useForm();
   const router = useRouter();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     axios
       .post(`${process.env.NEXT_PUBLIC_BACK_URL}/user/login`, data)
       .then(function (response) {
         if (response.data) {
           Cookies.set("token", response.data.sessionToken);
-          Cookies.set("userType", 'admin');
+          Cookies.set("userType", "admin");
           router.push("/restaurantes");
         } else {
           alert("Email ou senha incorreto");
@@ -52,7 +52,9 @@ export default function Home() {
 
       <hr />
 
-      {errors.email && <p role="alert">{errors.email?.message}</p>}
+      {errors.email && (
+        <p role="alert">{errors.email?.message}</p>
+      )}
       {errors.password && <p role="alert">{errors.password?.message}</p>}
     </form>
   );
