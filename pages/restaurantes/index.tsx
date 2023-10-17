@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { getSession } from "../../utils/getSession";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 export default function Home() {
   const { handleSubmit } = useForm();
@@ -17,11 +18,11 @@ export default function Home() {
     loadData();
   }, []);
 
-  const handleClick = async (id) => {
+  const handleClick = async (id: any) => {
     router.push(`/restaurantes/${id}`);
   };
 
-  const handleDelete = async (event, id) => {
+  const handleDelete = async (event: any, id: any) => {
     event.preventDefault();
     event.stopPropagation();
     axios
@@ -39,6 +40,7 @@ export default function Home() {
   const handleLogout = async () => {
     Cookies.remove("token");
     Cookies.remove("userType");
+    router.push("/");
   };
 
   const loadData = async () => {
@@ -82,7 +84,7 @@ export default function Home() {
           </tr>
         </thead>
         <tbody>
-          {restaurants.map((restaurant) => {
+          {restaurants.map((restaurant : any) => {
             return (
               <tr
                 key={restaurant._id}
@@ -98,7 +100,7 @@ export default function Home() {
           })}
         </tbody>
       </table>
-      <button type="button" onClick={handleLogout}>
+      <button type="button" onClick={handleLogout} style={{ marginTop: 40 }}>
         Sair
       </button>
     </form>
