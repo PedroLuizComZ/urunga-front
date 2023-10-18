@@ -363,17 +363,18 @@ export default function RestaurantDetail() {
 
                 <ul>
                   {restaurant &&
-                    restaurant.rating.map((item: any) => {
+                    restaurant.rating.map((item: any, index: number) => {
                       return (
-                        <li>
+                        <li key={index}>
                           <p>{item.userName.split(" ")[0]}</p>
                           <p>
                             {item.ratingValue}{" "}
                             {Array(item.ratingValue)
                               .fill(0)
-                              .map((item) => {
+                              .map((item, index) => {
                                 return (
                                   <Image
+                                    key={index}
                                     src={StarFullImage}
                                     alt="user image"
                                     width={15}

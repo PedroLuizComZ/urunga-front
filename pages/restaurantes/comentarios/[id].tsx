@@ -121,9 +121,10 @@ export default function Comments() {
                     {item.ratingValue}{" "}
                     {Array(item.ratingValue)
                       .fill(0)
-                      .map((item) => {
+                      .map((item, index) => {
                         return (
                           <Image
+                            key={index}
                             src={StarFullImage}
                             alt="user image"
                             width={15}
