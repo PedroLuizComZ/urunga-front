@@ -88,53 +88,53 @@ export default function Home() {
 
       <div className="checkbox-container">
         <p>Veggie</p>
-        <label class="switch">
+        <label className="switch">
           <input
             id="veggie"
             name="veggie"
             type="checkbox"
             {...register("veggie")}
           />
-          <span class="slider round" />
+          <span className="slider round" />
         </label>
       </div>
 
       <div className="checkbox-container">
         <p>Pet Friendly</p>
-        <label class="switch">
+        <label className="switch">
           <input
             id="petFriendly"
             name="petFriendly"
             type="checkbox"
             {...register("petFriendly")}
           />
-          <span class="slider round" />
+          <span className="slider round" />
         </label>
       </div>
 
       <div className="checkbox-container">
         <p>Espaço kids</p>
-        <label class="switch">
+        <label className="switch">
           <input
             id="kids"
             name="kids"
             type="checkbox"
             {...register("kids")}
           />
-          <span class="slider round" />
+          <span className="slider round" />
         </label>
       </div>
 
       <div className="checkbox-container">
         <p>Acessibilidade</p>
-        <label class="switch">
+        <label className="switch">
           <input
             id="accessibility"
             name="accessibility"
             type="checkbox"
             {...register("accessibility")}
           />
-          <span class="slider round" />
+          <span className="slider round" />
         </label>
       </div>
 

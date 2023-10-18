@@ -89,6 +89,14 @@ export default function Home() {
     setRestaurant({ ...restaurantCopy });
   };
 
+  const handleDashboardClick = () => {
+    router.push(`/restaurantes/dashboard/${id}`);
+  }
+
+  const handleCommentsClick = () => {
+    router.push(`/restaurantes/comentarios/${id}`);
+  }
+
   const getBase64 = (file) =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -100,6 +108,9 @@ export default function Home() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1>Editar restaurante</h1>
+      <button type="button" onClick={handleDashboardClick}>Dashboard </button>
+      <button type="button" onClick={handleCommentsClick}>Comentarios </button>
+      
       <input
         placeholder={"Nome"}
         {...register("name", { required: "Nome Obrigatório" })}
@@ -155,7 +166,7 @@ export default function Home() {
 
       <div className="checkbox-container">
         <p>Veggie</p>
-        <label class="switch">
+        <label className="switch">
           <input
             id="veggie"
             name="veggie"
@@ -164,13 +175,13 @@ export default function Home() {
             checked={veggie}
             onChange={(e) => setVeggie(e.target.checked)}
           />
-          <span class="slider round" />
+          <span className="slider round" />
         </label>
       </div>
 
       <div className="checkbox-container">
         <p>Pet Friendly</p>
-        <label class="switch">
+        <label className="switch">
           <input
             id="petFriendly"
             name="petFriendly"
@@ -179,13 +190,13 @@ export default function Home() {
             checked={petFriendly}
             onChange={(e) => setPetFriendly(e.target.checked)}
           />
-          <span class="slider round" />
+          <span className="slider round" />
         </label>
       </div>
 
       <div className="checkbox-container">
         <p>Espaço kids</p>
-        <label class="switch">
+        <label className="switch">
           <input
             id="kids"
             name="kids"
@@ -194,13 +205,13 @@ export default function Home() {
             checked={kids}
             onChange={(e) => setKids(e.target.checked)}
           />
-          <span class="slider round" />
+          <span className="slider round" />
         </label>
       </div>
 
       <div className="checkbox-container">
         <p>Acessibilidade</p>
-        <label class="switch">
+        <label className="switch">
           <input
             id="accessibility"
             name="accessibility"
@@ -209,7 +220,7 @@ export default function Home() {
             checked={accessibility}
             onChange={(e) => setAccessibility(e.target.checked)}
           />
-          <span class="slider round" />
+          <span className="slider round" />
         </label>
       </div>
       <input placeholder={"Logo"} type="file" {...register("logo")} />

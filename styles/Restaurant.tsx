@@ -247,3 +247,37 @@ export const ModalReviewContainer = styled.div`
     color: #000000;
   }
 `;
+
+export const ModalCommentsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+
+  h1 {
+    font-weight: 600;
+    font-size: 27.65px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    margin: 25px 0;
+  }
+
+  ul {
+    width: 100%;
+    padding: 0;
+    list-style: none;
+  }
+
+  p {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    margin-left: 8px;
+  }
+`

@@ -6,7 +6,7 @@ export const AdminPage = styled.div`
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   min-height: 100vh;
   overflow-y: hidden;
-  
+
   .main-title {
     padding: 15px;
     margin: 0;
@@ -240,5 +240,22 @@ export const AdminPage = styled.div`
     .slider.round:before {
       border-radius: 50%;
     }
+  }
+
+  .dashboard-container {
+    display: flex;
+
+    canvas {
+      width: 50% !important;
+      height: auto !important;
+    }
+  }
+
+  .comments-item {
+    padding: 10px;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    border-radius: 5px;
+    list-style: none;
   }
 `;

@@ -2,6 +2,7 @@ import Head from "next/head";
 import {
   InformationContainer,
   ItemList,
+  ModalCommentsContainer,
   ModalContainer,
   ModalReviewContainer,
   QrCodeContainer,
@@ -188,6 +189,8 @@ export default function RestaurantDetail() {
     window.open(restaurant?.review);
   };
 
+  console.log(restaurant);
+
   return (
     <>
       <Head>
@@ -355,6 +358,43 @@ export default function RestaurantDetail() {
 
           <Modal isOpen={startModal} toggle={toggleStar} centered>
             <ModalBody>
+              <ModalCommentsContainer>
+                <h1>Avaliações</h1>
+
+                <ul>
+                  {restaurant &&
+                    restaurant.rating.map((item: any) => {
+                      return (
+                        <li>
+                          <p>{item.userName.split(" ")[0]}</p>
+                          <p>
+                            {item.ratingValue}{" "}
+                            {Array(item.ratingValue)
+                              .fill(0)
+                              .map((item) => {
+                                return (
+                                  <Image
+                                    src={StarFullImage}
+                                    alt="user image"
+                                    width={15}
+                                    height={15}
+                                  />
+                                );
+                              })}
+                          </p>
+                          <p>{item.commentary}</p>
+                          {item.answer && (
+                            <p>
+                              <strong>Resposta</strong> : {item.answer}
+                            </p>
+                          )}
+
+                          <hr />
+                        </li>
+                      );
+                    })}
+                </ul>
+              </ModalCommentsContainer>
               <ModalReviewContainer>
                 <h1>Avalie o restaurante</h1>
                 <div>
