@@ -24,7 +24,7 @@ export default function ForgetPassword() {
         if(response === "error updating user") {
           alert('Ocorreu um erro tente novamente mais tarde');
         } else {
-          router.push("/");
+          router.push("/login");
         }
       })
       .catch(function (error) {

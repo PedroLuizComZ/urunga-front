@@ -27,6 +27,7 @@ ChartJS.register(
 
 export default function Dashboard() {
   const [restaurant, setRestaurant] = useState<any>({});
+  const [period, setPeriod] = useState("");
 
   const router = useRouter();
   const { id } = router.query;
@@ -35,11 +36,15 @@ export default function Dashboard() {
     if (id) {
       loadData();
     }
-  }, [id]);
+  }, [id, period]);
 
   const loadData = async () => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_BACK_URL}/checkin/dashboard/${id}`)
+      .get(
+        `${process.env.NEXT_PUBLIC_BACK_URL}/checkin/dashboard/${id}${
+          period !== "" ? `?period=${period}` : ""
+        }`
+      )
       .then(function (response) {
         setRestaurant(response.data);
       })
@@ -115,13 +120,45 @@ export default function Dashboard() {
     ],
   };
 
-  const checkindLabel = ["1-10", "11-20", "21-31"];
+  const checkindLabel = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+    "31",
+  ];
 
   const checkinLine = {
     labels: checkindLabel,
     datasets: [
       {
-        label: "Acesso neste mês por faixa",
+        label: "Acesso por dia",
         data: restaurant.checkinLine,
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
@@ -132,6 +169,21 @@ export default function Dashboard() {
     <form>
       <h1>Dashboard</h1>
       <hr />
+      <select
+        name="time"
+        id="time"
+        value={period}
+        onChange={(e) => setPeriod(e.target.value)}
+      >
+        <option value="" disabled selected>
+          Período
+        </option>
+        <option value="YTD">YTD</option>
+        <option value="12">12 meses</option>
+        <option value="6">6 meses</option>
+        <option value="3">3 meses</option>
+        <option value="1">Mês atual</option>
+      </select>
       <Bar
         options={options}
         data={checkinLine}

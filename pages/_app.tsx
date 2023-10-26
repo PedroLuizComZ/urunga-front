@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps } : AppProps) {
     const token = Cookies.get("token");
     const userType = Cookies.get("userType");
     if (token) {
-      if (userType === "admin" && router.pathname === "/") {
+      if (userType === "admin" && router.pathname === "/login") {
         router.push("/restaurantes");
       }
 
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps } : AppProps) {
     }
   }, []);
 
-  if (router.pathname === "/home") {
+  if (router.pathname === "/") {
     return <Component {...pageProps} />;
   }
 

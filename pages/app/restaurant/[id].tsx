@@ -231,40 +231,52 @@ export default function RestaurantDetail() {
                   <p>{restaurant!.name} </p>
                   <div className="social-media-container">
                     {restaurant && restaurant.veggie && (
-                      <Image
-                        src={"/images/vegan.png"}
-                        alt={"pet"}
-                        height={30}
-                        width={30}
-                        style={{ marginRight: 10 }}
-                      />
+                      <div className="tooltip-conainer">
+                        <Image
+                          src={"/images/vegan.png"}
+                          alt={"pet"}
+                          height={30}
+                          width={30}
+                          style={{ marginRight: 10 }}
+                        />
+                        <span className="tooltiptext">Veggie</span>
+                      </div>
                     )}
                     {restaurant && restaurant.petFriendly && (
-                      <Image
-                        src={"/images/pet.png"}
-                        alt={"pet"}
-                        height={30}
-                        width={30}
-                        style={{ marginRight: 10 }}
-                      />
+                      <div className="tooltip-conainer">
+                        <Image
+                          src={"/images/pet.png"}
+                          alt={"pet"}
+                          height={30}
+                          width={30}
+                          style={{ marginRight: 10 }}
+                        />
+                        <span className="tooltiptext">Pet Friendly</span>
+                      </div>
                     )}
                     {restaurant && restaurant.kids && (
-                      <Image
-                        src={"/images/kids.png"}
-                        alt={"pet"}
-                        height={30}
-                        width={30}
-                        style={{ marginRight: 10 }}
-                      />
+                      <div className="tooltip-conainer">
+                        <Image
+                          src={"/images/kids.png"}
+                          alt={"pet"}
+                          height={30}
+                          width={30}
+                          style={{ marginRight: 10 }}
+                        />
+                        <span className="tooltiptext">Espaço kids</span>
+                      </div>
                     )}
                     {restaurant && restaurant.accessibility && (
-                      <Image
-                        src={"/images/chair.png"}
-                        alt={"pet"}
-                        height={30}
-                        width={30}
-                        style={{ marginRight: 10 }}
-                      />
+                      <div className="tooltip-conainer">
+                        <Image
+                          src={"/images/chair.png"}
+                          alt={"pet"}
+                          height={30}
+                          width={30}
+                          style={{ marginRight: 10 }}
+                        />
+                        <span className="tooltiptext">Acessibilidade</span>
+                      </div>
                     )}
                   </div>
                   <div className="ratings" onClick={toggleStar}>

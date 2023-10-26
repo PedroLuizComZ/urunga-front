@@ -30,7 +30,7 @@ export default function Home() {
   };
 
   const handleClick = (id: string) => {
-    router.push(`/restaurant/${id}`);
+    router.push(`/app/restaurant/${id}`);
   };
 
   const handleGoBack = () => {
@@ -123,40 +123,56 @@ export default function Home() {
                           <p>{item.name}</p>
                           <div className="info-icons">
                             {item && item.veggie && (
-                              <Image
-                                src={"/images/vegan.png"}
-                                alt={"pet"}
-                                height={18}
-                                width={18}
-                                style={{ marginRight: 10 }}
-                              />
+                              <div className="tooltip-conainer">
+                                <Image
+                                  src={"/images/vegan.png"}
+                                  alt={"pet"}
+                                  height={18}
+                                  width={18}
+                                  style={{ marginRight: 10 }}
+                                />
+                                <span className="tooltiptext">Veggie</span>
+                              </div>
                             )}
                             {item && item.petFriendly && (
-                              <Image
-                                src={"/images/pet.png"}
-                                alt={"pet"}
-                                height={18}
-                                width={18}
-                                style={{ marginRight: 10 }}
-                              />
+                              <div className="tooltip-conainer">
+                                <Image
+                                  src={"/images/pet.png"}
+                                  alt={"pet"}
+                                  height={18}
+                                  width={18}
+                                  style={{ marginRight: 10 }}
+                                />
+                                <span className="tooltiptext">
+                                  Pet Friendly
+                                </span>
+                              </div>
                             )}
                             {item && item.kids && (
-                              <Image
-                                src={"/images/kids.png"}
-                                alt={"pet"}
-                                height={18}
-                                width={18}
-                                style={{ marginRight: 10 }}
-                              />
+                              <div className="tooltip-conainer">
+                                <Image
+                                  src={"/images/kids.png"}
+                                  alt={"pet"}
+                                  height={18}
+                                  width={18}
+                                  style={{ marginRight: 10 }}
+                                />{" "}
+                                <span className="tooltiptext">Espaço kids</span>
+                              </div>
                             )}
                             {item && item.accessibility && (
-                              <Image
-                                src={"/images/chair.png"}
-                                alt={"pet"}
-                                height={18}
-                                width={18}
-                                style={{ marginRight: 10 }}
-                              />
+                              <div className="tooltip-conainer">
+                                <Image
+                                  src={"/images/chair.png"}
+                                  alt={"pet"}
+                                  height={18}
+                                  width={18}
+                                  style={{ marginRight: 10 }}
+                                />
+                                <span className="tooltiptext">
+                                  Acessibilidade
+                                </span>
+                              </div>
                             )}
                           </div>
                           <span>{item.description}</span>

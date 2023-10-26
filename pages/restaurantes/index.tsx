@@ -40,7 +40,7 @@ export default function Home() {
   const handleLogout = async () => {
     Cookies.remove("token");
     Cookies.remove("userType");
-    router.push("/");
+    router.push("/login");
   };
 
   const loadData = async () => {
