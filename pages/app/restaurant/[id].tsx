@@ -27,14 +27,6 @@ import StarImage from "../../../public/images/star.png";
 import StarFullImage from "../../../public/images/star-full.png";
 import { calcRating } from "../../../utils/calcRating";
 import { getUserProfileController } from "../../../controllers/Auth.controller";
-import { getMobileDetect } from "../../../utils/getMobileDetect";
-
-const useMobileDetect = () => {
-  useEffect(() => {}, []);
-  const userAgent =
-    typeof navigator === "undefined" ? "SSR" : navigator.userAgent;
-  return getMobileDetect(userAgent);
-};
 
 export default function RestaurantDetail() {
   const router = useRouter();
@@ -42,8 +34,6 @@ export default function RestaurantDetail() {
   const [modal, setModal] = useState(false);
   const [startModal, setStartModal] = useState(false);
   const [hasValidSubscription, setHasValidSubscription] = useState(false);
-
-  const currentDevice = useMobileDetect();
 
   const canvasRef = useRef<any>(null);
   const textareaRef = useRef<any>(null);
@@ -118,9 +108,12 @@ export default function RestaurantDetail() {
       ratingValue: reviewValue,
     };
 
-    const result = await createRatingController(`${id}`, payload);
+    await createRatingController(`${id}`, payload);
 
-    console.log(result);
+    setReviewValue(5);
+    setStartModal(false);
+
+    await loadData();
   };
 
   const createSubscription = async () => {

@@ -45,6 +45,10 @@ export default function Home() {
     window.open(`https://www.tiktok.com/@urunga?_t=8el9wSnX45u&_r=1`);
   };
 
+  const handleEmailClick = () => {
+    window.open(`mailto:app.urunga@gmail.com`);
+  };
+
   const router = useRouter();
 
   return (
@@ -84,7 +88,6 @@ export default function Home() {
         <div className="info-list">
           <h2>Baixe o App</h2>
           <ul>
-            <li>{CheckIcon()}Filtros Personalizados</li>
             <li>{CheckIcon()}Filtros Personalizados</li>
             <li>{CheckIcon()}Economize em Restaurantes</li>
             <li>{CheckIcon()}Códigos Verificados</li>
@@ -172,6 +175,16 @@ export default function Home() {
                   height={30}
                   width={30}
                   onClick={handleTicTocClick}
+                />
+              </li>
+
+              <li>
+                <Image
+                  src="/icons/mail.svg"
+                  alt="Email"
+                  height={30}
+                  width={30}
+                  onClick={handleEmailClick}
                 />
               </li>
             </ul>
