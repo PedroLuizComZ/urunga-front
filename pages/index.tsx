@@ -56,7 +56,7 @@ export default function Home() {
       <Title>
         <Image
           src={"/logo.svg"}
-          alt={"Logo"}
+          alt={"Urunga"}
           height={100}
           width={100}
           className="logo-icon"
@@ -69,7 +69,7 @@ export default function Home() {
       <HeroContainer>
         <Image
           src={"/images/logoBranco.png"}
-          alt={"Logo"}
+          alt={"Urunga"}
           className="logo-icon"
           fill={true}
         />
@@ -80,7 +80,7 @@ export default function Home() {
         <div className="phone-container">
           <Image
             src={"/images/phone.jpg"}
-            alt={"Logo"}
+            alt={"Urunga"}
             className="phone-img"
             fill={true}
           />
@@ -211,7 +211,7 @@ export default function Home() {
         </div>
         <Image
           src={"/logo.svg"}
-          alt={"Logo"}
+          alt={"Urunga"}
           height={100}
           width={100}
           className="logo-icon"
