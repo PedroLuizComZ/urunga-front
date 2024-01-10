@@ -4,7 +4,7 @@ const VideoBox = ({ data }: any) => {
   return (
     <VideoBoxContainer>
       {data.map(({ title, videos }: any, index: number) => (
-        <div className="video-group">
+        <div key={index} className="video-group">
           <h2>{title}</h2>
           <div className="video-container">
             {videos.map((video: any, index: any) => (
