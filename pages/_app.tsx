@@ -10,7 +10,20 @@ import { useEffect } from "react";
 import Cookies from "js-cookie";
 import { AppProps } from "next/app";
 
-function MyApp({ Component, pageProps } : AppProps) {
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDXBvDE1nKy9O63Cv1iHeouOEGQMfd4YtA",
+  authDomain: "urunga-1c092.firebaseapp.com",
+  projectId: "urunga-1c092",
+  storageBucket: "urunga-1c092.appspot.com",
+  messagingSenderId: "682995738569",
+  appId: "1:682995738569:web:6d48bad9f2c2b4b1f8ea18",
+  measurementId: "G-JLVLLTFCHW",
+};
+
+function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
@@ -25,6 +38,10 @@ function MyApp({ Component, pageProps } : AppProps) {
         router.push("/app/list");
       }
     }
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
   }, []);
 
   if (router.pathname === "/") {
