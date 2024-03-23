@@ -53,8 +53,6 @@ export default function Dashboard() {
       });
   };
 
-  console.log(restaurant);
-
   if (Object.keys(restaurant).length === 0) {
     return (
       <form>

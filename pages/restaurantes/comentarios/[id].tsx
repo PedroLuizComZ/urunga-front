@@ -72,8 +72,6 @@ export default function Comments() {
   };
 
   const handleSubmit = () => {
-    console.log(restaurant);
-
     const payload = restaurant.rating.map((item: any) => {
       return {
         userId: item.userId,

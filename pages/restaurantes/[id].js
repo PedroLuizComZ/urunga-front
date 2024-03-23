@@ -261,7 +261,6 @@ export default function Home() {
         role="button"
         onClick={() => {
           const restaurantCopy = restaurant;
-          console.log(restaurantCopy);
           restaurantCopy.promotions.push("");
           setRestaurant({ ...restaurantCopy });
         }}

@@ -27,6 +27,7 @@ import StarImage from "../../../public/images/star.png";
 import StarFullImage from "../../../public/images/star-full.png";
 import { calcRating } from "../../../utils/calcRating";
 import { getUserProfileController } from "../../../controllers/Auth.controller";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 export default function RestaurantDetail() {
   const router = useRouter();
@@ -59,6 +60,17 @@ export default function RestaurantDetail() {
       checkSubscription();
     }
   }, [router.isReady]);
+
+  useEffect(() => {
+    if (restaurant) {
+      const analytics = getAnalytics();
+      const parsedToken = parseJwt(`${token}`);
+      logEvent(analytics, "page_view", {
+        page_title: `${restaurant.name}`,
+        user_id: parsedToken.data._id,
+      });
+    }
+  }, [restaurant]);
 
   const loadData = async () => {
     const result = await listStoreByIdController(`${id}`);
@@ -179,10 +191,14 @@ export default function RestaurantDetail() {
   };
 
   const handleReviewClick = () => {
+    const analytics = getAnalytics();
+    const parsedToken = parseJwt(`${token}`);
+    logEvent(analytics, "review_click", {
+      content_id: restaurant?.name,
+      user_id: parsedToken.data._id,
+    });
     window.open(restaurant?.review);
   };
-
-  console.log(restaurant);
 
   return (
     <>
