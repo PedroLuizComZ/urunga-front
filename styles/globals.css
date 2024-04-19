@@ -80,3 +80,12 @@ body {
 .tooltip-conainer:hover .tooltiptext {
   display: block;
 }
+
+.action-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  cursor: pointer;
+}

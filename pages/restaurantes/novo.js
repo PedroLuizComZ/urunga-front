@@ -74,10 +74,10 @@ export default function Home() {
 
       <hr />
 
-      <input placeholder={"Nome para contato"} {...register("contactName")} />
-      <input placeholder={"Telefone para contato"} {...register("contactPhone")} />
-      <input placeholder={"Email para contato"} {...register("contactEmail")} />
-      <input placeholder={"Chave Pix"} {...register("pix")} />
+      <input placeholder={"Nome para contato"} {...register("contactName", { required: "Nome é Obrigatório" })} />
+      <input placeholder={"Telefone para contato"} {...register("contactPhone", { required: "Telefone é Obrigatório" })} />
+      <input placeholder={"Email para contato"} {...register("contactEmail", { required: "Email é Obrigatório" })} />
+      <input placeholder={"Chave Pix"} {...register("pix", { required: "Pix é Obrigatório" })} />
 
       <hr />
 
