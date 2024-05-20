@@ -135,6 +135,23 @@ export default function RestaurantDetail() {
       const session = await stripe.checkout.sessions.create({
         success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success`,
         customer_email: parsedToken.data.email,
+        billing_address_collection: "required",
+        phone_number_collection: {
+          enabled: true,
+        },
+        tax_id_collection: {
+          enabled: true,
+        },
+        custom_fields: [
+          {
+            key: "cpf",
+            label: {
+              custom: "CPF",
+              type: "custom",
+            },
+            type: "numeric",
+          },
+        ],
         line_items: [
           {
             price: process.env.NEXT_PUBLIC_STRIPE_SUBSCRIPTION_ID,
