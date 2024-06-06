@@ -74,7 +74,7 @@ export default function Home() {
           fill={true}
         />
 
-        <h1>Seu aplicativo de descontos em estabelicimentos</h1>
+        <h1>Seu aplicativo de descontos em estabelecimentos</h1>
       </HeroContainer>
       <CTAContainer>
         <div className="phone-container">
