@@ -138,6 +138,45 @@ export default function Home() {
         </label>
       </div>
 
+      <div className="checkbox-container">
+        <p>Vale Refeição</p>
+        <label className="switch">
+          <input
+            id="mealTicket"
+            name="mealTicket"
+            type="checkbox"
+            {...register("mealTicket")}
+          />
+          <span className="slider round" />
+        </label>
+      </div>
+
+      <div className="checkbox-container">
+        <p>Lactose Free</p>
+        <label className="switch">
+          <input
+            id="lactoseFree"
+            name="lactoseFree"
+            type="checkbox"
+            {...register("lactoseFree")}
+          />
+          <span className="slider round" />
+        </label>
+      </div>
+
+      <div className="checkbox-container">
+        <p>Gluten Free</p>
+        <label className="switch">
+          <input
+            id="glutenFree"
+            name="glutenFree"
+            type="checkbox"
+            {...register("glutenFree")}
+          />
+          <span className="slider round" />
+        </label>
+      </div>
+
       <input
         placeholder={"Logo"}
         type="file"

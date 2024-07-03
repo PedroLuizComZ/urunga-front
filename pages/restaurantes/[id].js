@@ -19,6 +19,9 @@ export default function Home() {
   const [petFriendly, setPetFriendly] = useState(false);
   const [kids, setKids] = useState(false);
   const [accessibility, setAccessibility] = useState(false);
+  const [mealTicket, setMealTicket] = useState(false);
+  const [lactoseFree, setLactoseFree] = useState(false);
+  const [glutenFree, setGlutenFree] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
@@ -38,6 +41,9 @@ export default function Home() {
         setPetFriendly(response.data.petFriendly);
         setKids(response.data.kids);
         setAccessibility(response.data.accessibility);
+        setMealTicket(response.data.mealTicket);
+        setLactoseFree(response.data.lactoseFree);
+        setGlutenFree(response.data.glutenFree);
       })
       .catch(function (error) {
         console.error(error);
@@ -223,6 +229,52 @@ export default function Home() {
           <span className="slider round" />
         </label>
       </div>
+
+      <div className="checkbox-container">
+        <p>Vale Refeição</p>
+        <label className="switch">
+          <input
+            id="mealTicket"
+            name="mealTicket"
+            type="checkbox"
+            {...register("mealTicket")}
+            checked={mealTicket}
+            onChange={(e) => setMealTicket(e.target.checked)}
+          />
+          <span className="slider round" />
+        </label>
+      </div>
+      
+      <div className="checkbox-container">
+        <p>Lactose Free</p>
+        <label className="switch">
+          <input
+            id="lactoseFree"
+            name="lactoseFree"
+            type="checkbox"
+            {...register("lactoseFree")}
+            checked={lactoseFree}
+            onChange={(e) => setLactoseFree(e.target.checked)}
+          />
+          <span className="slider round" />
+        </label>
+      </div>
+
+      <div className="checkbox-container">
+        <p>Gluten Free</p>
+        <label className="switch">
+          <input
+            id="glutenFree"
+            name="glutenFree"
+            type="checkbox"
+            {...register("glutenFree")}
+            checked={glutenFree}
+            onChange={(e) => setGlutenFree(e.target.checked)}
+          />
+          <span className="slider round" />
+        </label>
+      </div>
+
       <input placeholder={"Logo"} type="file" {...register("logo")} />
       <select
         name="category"

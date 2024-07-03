@@ -189,7 +189,7 @@ export default function Home() {
                           <p>{item.name}</p>
                           <div className="info-icons">
                             {item && item.veggie && (
-                              <div className="tooltip-conainer">
+                              <div className="tooltip-container">
                                 <Image
                                   src={"/images/vegan.png"}
                                   alt={"pet"}
@@ -201,7 +201,7 @@ export default function Home() {
                               </div>
                             )}
                             {item && item.petFriendly && (
-                              <div className="tooltip-conainer">
+                              <div className="tooltip-container">
                                 <Image
                                   src={"/images/pet.png"}
                                   alt={"pet"}
@@ -215,7 +215,7 @@ export default function Home() {
                               </div>
                             )}
                             {item && item.kids && (
-                              <div className="tooltip-conainer">
+                              <div className="tooltip-container">
                                 <Image
                                   src={"/images/kids.png"}
                                   alt={"pet"}
@@ -227,7 +227,7 @@ export default function Home() {
                               </div>
                             )}
                             {item && item.accessibility && (
-                              <div className="tooltip-conainer">
+                              <div className="tooltip-container">
                                 <Image
                                   src={"/images/chair.png"}
                                   alt={"pet"}
@@ -238,6 +238,46 @@ export default function Home() {
                                 <span className="tooltiptext">
                                   Acessibilidade
                                 </span>
+                              </div>
+                            )}
+                            {item && item.mealTicket && (
+                              <div className="tooltip-container">
+                                <Image
+                                  src={"/images/mealTicket.jpeg"}
+                                  alt={"mealTicket"}
+                                  height={18}
+                                  width={18}
+                                  style={{ marginRight: 10 }}
+                                />
+                                <span className="tooltiptext">
+                                  Vale Refeição
+                                </span>
+                              </div>
+                            )}
+                            {item && item.lactoseFree && (
+                              <div className="tooltip-container">
+                                <Image
+                                  src={"/images/lactoseFree.jpeg"}
+                                  alt={"lactoseFree"}
+                                  height={18}
+                                  width={18}
+                                  style={{ marginRight: 10 }}
+                                />
+                                <span className="tooltiptext">
+                                  Lactose Free
+                                </span>
+                              </div>
+                            )}
+                            {item && item.glutenFree && (
+                              <div className="tooltip-container">
+                                <Image
+                                  src={"/images/glutenFree.jpeg"}
+                                  alt={"glutenFree"}
+                                  height={18}
+                                  width={18}
+                                  style={{ marginRight: 10 }}
+                                />
+                                <span className="tooltiptext">Gluten Free</span>
                               </div>
                             )}
                           </div>

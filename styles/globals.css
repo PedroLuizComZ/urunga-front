@@ -60,12 +60,12 @@ body {
 }
 
 
-.tooltip-conainer {
+.tooltip-container {
   position: relative;
   display: inline-block;
 }
 
-.tooltip-conainer .tooltiptext {
+.tooltip-container .tooltiptext {
   display: none;
   background-color: black;
   color: #fff;
@@ -77,7 +77,7 @@ body {
   z-index: 1;
 }
 
-.tooltip-conainer:hover .tooltiptext {
+.tooltip-container:hover .tooltiptext {
   display: block;
 }
 

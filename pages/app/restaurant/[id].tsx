@@ -257,7 +257,7 @@ export default function RestaurantDetail() {
                   <p>{restaurant!.name} </p>
                   <div className="social-media-container">
                     {restaurant && restaurant.veggie && (
-                      <div className="tooltip-conainer">
+                      <div className="tooltip-container">
                         <Image
                           src={"/images/vegan.png"}
                           alt={"pet"}
@@ -269,7 +269,7 @@ export default function RestaurantDetail() {
                       </div>
                     )}
                     {restaurant && restaurant.petFriendly && (
-                      <div className="tooltip-conainer">
+                      <div className="tooltip-container">
                         <Image
                           src={"/images/pet.png"}
                           alt={"pet"}
@@ -281,7 +281,7 @@ export default function RestaurantDetail() {
                       </div>
                     )}
                     {restaurant && restaurant.kids && (
-                      <div className="tooltip-conainer">
+                      <div className="tooltip-container">
                         <Image
                           src={"/images/kids.png"}
                           alt={"pet"}
@@ -293,7 +293,7 @@ export default function RestaurantDetail() {
                       </div>
                     )}
                     {restaurant && restaurant.accessibility && (
-                      <div className="tooltip-conainer">
+                      <div className="tooltip-container">
                         <Image
                           src={"/images/chair.png"}
                           alt={"pet"}
@@ -302,6 +302,42 @@ export default function RestaurantDetail() {
                           style={{ marginRight: 10 }}
                         />
                         <span className="tooltiptext">Acessibilidade</span>
+                      </div>
+                    )}
+                    {restaurant && restaurant.mealTicket && (
+                      <div className="tooltip-container">
+                        <Image
+                          src={"/images/mealTicket.jpeg"}
+                          alt={"mealTicket"}
+                          height={30}
+                          width={30}
+                          style={{ marginRight: 10 }}
+                        />
+                        <span className="tooltiptext">Vale Refeição</span>
+                      </div>
+                    )}
+                    {restaurant && restaurant.lactoseFree && (
+                      <div className="tooltip-container">
+                        <Image
+                          src={"/images/lactoseFree.jpeg"}
+                          alt={"lactoseFree"}
+                          height={30}
+                          width={30}
+                          style={{ marginRight: 10 }}
+                        />
+                        <span className="tooltiptext">Lactose Free</span>
+                      </div>
+                    )}
+                    {restaurant && restaurant.glutenFree && (
+                      <div className="tooltip-container">
+                        <Image
+                          src={"/images/glutenFree.jpeg"}
+                          alt={"glutenFree"}
+                          height={30}
+                          width={30}
+                          style={{ marginRight: 10 }}
+                        />
+                        <span className="tooltiptext">Gluten Free</span>
                       </div>
                     )}
                   </div>

@@ -9,6 +9,9 @@ export interface IStores {
   petFriendly: boolean;
   kids: boolean;
   accessibility: boolean;
+  lactoseFree: boolean;
+  glutenFree: boolean;
+  mealTicket: boolean;
   contactName: string;
   contactPhone: string;
   contactEmail: string;

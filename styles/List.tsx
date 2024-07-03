@@ -169,7 +169,7 @@ export const ItemList = styled.div`
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-      width: 200px;
+      width: 260px;
 
       p {
         font-style: normal;
