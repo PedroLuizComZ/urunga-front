@@ -129,7 +129,7 @@ export default function Signup() {
           </div>
           <small>
             Ao criar a conta você esta aceitando nossos{" "}
-            <Link href="/termos-de-uso"> termos de uso </Link>{" "}
+            <Link href="/app/termos-de-uso"> termos de uso </Link>{" "}
           </small>
           <button type="submit">Cadastrar</button>
         </form>
